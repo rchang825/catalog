@@ -1,3 +1,4 @@
 class Customer < ApplicationRecord
-  has_one :cart
+  has_many :cart_items
+  has_many :products, through: :cart_items
 end
