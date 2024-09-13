@@ -1,0 +1,6 @@
+<% @cart_items.each do |item| %>
+    <%= item.product.name %> <br />
+    <%= "$#{item.product.price} x #{item.quantity} = $#{item.product.price * item.quantity}" %> <br />
+<% end %>
+<br />
+<%= "Total: $#{@total}"%>

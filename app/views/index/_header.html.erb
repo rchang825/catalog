@@ -1,2 +1,5 @@
+<%= link_to "Products", root_path %>
 <%= link_to "Log In", new_customer_session_path unless customer_signed_in? %> 
 <%= link_to "Log Out", destroy_customer_session_path, data: { turbo_method: :delete } if customer_signed_in? %>
+
+<%= link_to "Cart", cart_items_path if customer_signed_in? %>

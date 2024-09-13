@@ -1,16 +1,21 @@
 class CartItemsController < ApplicationController
+  before_action :authenticate_customer!
   def index
-    @customer = Customer.find(params[:customer_id])
+    @customer = current_customer
     @cart_items = CartItem.where(customer_id: @customer.id)
+    @total = 0
+    @cart_items.each do |cart_item|
+      @total += price_times_quantity(cart_item)
+    end
   end
   def new
     @cart_item = CartItem.new
   end
   def create
-    @cart_item = CartItem.find_by(cart_item_params)
+    @customer = current_customer
+    @cart_item = @customer.cart_items.find_by(product_id: params[:product_id])
     if @cart_item.nil?
-      @cart_item = CartItem.new(cart_item_params)
-      @cart_item.quantity = 1
+      @cart_item = @customer.cart_items.new(product_id: params[:product_id], quantity: 1)
     else
       @cart_item.quantity += 1
     end
@@ -20,5 +25,8 @@ class CartItemsController < ApplicationController
   private
   def cart_item_params
     params.require(:card_item).permit(:customer_id, :product_id)
+  end
+  def price_times_quantity(cart_item)
+    cart_item.quantity * cart_item.product.price
   end
 end
