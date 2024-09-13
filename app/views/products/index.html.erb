@@ -1,7 +1,13 @@
 <h1>All Products</h1>
-<% @products.each do |product| %>
-    <%= render partial: "product", locals: {product: product}%>
-    <turbo-frame id=<%="product_#{product.id}"%>>
-        <%= button_to "Add to Cart", cart_items_path(customer_id: current_customer.id, product_id: product.id), data: { 'turbo-method' => :post} %>
-    </turbo-frame>
-<% end %>
+<div class="product-grid-container">
+    <% @products.each do |product| %>
+        <div class="product-grid-item">
+            <%= render partial: "product", locals: {product: product}%>
+            </div>
+            <div class="add-to-cart-grid-item">
+            <turbo-frame id=<%="product_#{product.id}"%>>
+                <%= button_to "Add to Cart", cart_items_path(customer_id: current_customer.id, product_id: product.id), data: { 'turbo-method' => :post} %>
+            </turbo-frame>
+        </div>
+    <% end %>
+</div>

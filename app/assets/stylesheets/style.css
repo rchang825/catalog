@@ -1,0 +1,28 @@
+ul.nav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    padding-top: 1em;
+    background-color: burlywood;
+    position: sticky;
+    top: 0;
+    width: 100%;
+}
+.nav li {
+    display: inline;
+}
+.nav li a {
+    text-align: center;
+    padding: 1em;
+    text-decoration: none;
+}
+.product-grid-container {
+    display: grid;
+    padding: 1em;
+}
+.product-grid-item {
+    grid-column: 1 / span 2;
+}
+.add-to-cart-grid-item {
+    grid-column: 3 / span 2;
+}
