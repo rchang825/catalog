@@ -19,6 +19,7 @@ ul.nav {
 .product-grid-container {
     display: grid;
     padding: 1em;
+    row-gap: 1em;
 }
 .product-grid-item {
     grid-column: 1 / span 2;
