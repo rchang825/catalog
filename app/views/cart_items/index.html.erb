@@ -1,6 +1,8 @@
-<% @cart_items.each do |item| %>
+<h1> <%="#{current_customer.name}'s Shopping Cart" %> </h1>
+<% @shopping_cart_items.each do |item| %>
     <%= item.product.name %> <br />
-    <%= "$#{item.product.price} x #{item.quantity} = $#{item.product.price * item.quantity}" %> <br />
+    <%= "#{number_to_currency(item.product.price, :unit => "$")} x #{item.quantity}" %>
+    <%= " = #{number_to_currency(item.product.price * item.quantity, :unit => "$")}" %> <br />
 <% end %>
 <br />
-<%= "Total: $#{@total}"%>
+<%= "Total: #{number_to_currency(@total, :unit => "$")}"%>

@@ -1,4 +1,4 @@
 <div>
     <strong><%= product.name %></strong> <br />
-    <%= "Price: $#{product.price}" %> <br />
+    <%= "Price: #{number_to_currency(product.price, :unit => "$")}" %> <br />
 </div>

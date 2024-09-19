@@ -1,0 +1,8 @@
+<h1> <%= "#{current_customer.name}'s Wishlist" %> </h1>
+<% cart_items.each do |item| %>
+    <%= "#{item.product.name} x #{item.quantity}" %> <br />
+    <turbo-frame id=<%="product_#{item.product.id}"%>>
+        <%= button_to "Add to Cart", cart_items_path(customer_id: current_customer.id, product_id: item.product.id, category: "shopping"), data: { 'turbo-method' => :post} %>
+    </turbo-frame>
+    <br />
+<% end %>

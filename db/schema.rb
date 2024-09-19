@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_09_12_225554) do
+ActiveRecord::Schema[7.1].define(version: 2024_09_19_194030) do
   create_table "cart_items", force: :cascade do |t|
     t.integer "product_id"
     t.integer "customer_id"
     t.integer "quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "category"
     t.index ["customer_id"], name: "index_cart_items_on_customer_id"
     t.index ["product_id"], name: "index_cart_items_on_product_id"
   end
